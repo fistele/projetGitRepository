@@ -29,3 +29,31 @@ input[type=submit], input[type=reset] {
   box-shadow: 1px 1px 1px #1976d2;
   cursor: pointer;
 }
+
+.divInfo , .divForm{
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.divInfo{
+  float: left;
+  width: 30%;
+  background: #1976d2;
+  margin-left: -15px;
+  padding-left: 20px;
+  height: 540px;
+  color: white;
+}
+
+.divForm{
+  float: right;
+  width: 60%;
+}
+
+footer{
+  position: relative;
+  top: 340px;
+  color: white;
+}
+
+
