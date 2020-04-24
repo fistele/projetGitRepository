@@ -50,10 +50,23 @@ input[type=submit], input[type=reset] {
   width: 60%;
 }
 
+.form{
+  width: 60%;
+}
+
+.divChoixRDV{
+  width: 30%;
+  margin-left: 2%;
+}
+
+.form, .divChoixRDV{
+  display: inline-block;
+  vertical-align: top;
+}
+
+
 footer{
   position: relative;
   top: 340px;
   color: white;
 }
-
-

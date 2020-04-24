@@ -8,6 +8,9 @@ import {AuthLoginInfo} from '../auth/login-info';
   styleUrls: ['./candidat-space.component.css']
 })
 export class CandidatSpaceComponent implements OnInit {
+
+  constructor(private token: TokenStorageService) {
+  }
   private envoiFichierService: any;
   form: any = {};
   isLoggedIn = false;
@@ -17,7 +20,19 @@ export class CandidatSpaceComponent implements OnInit {
   private loginInfo: AuthLoginInfo;
   info: any;
 
-  constructor(private token: TokenStorageService) {
+  candidateStatut = 'New candidate';
+  candidateFirstName = this.form.first_name;
+  candidateLastName = this.form.last_name;
+  candidateEmail = this.form.email;
+
+
+  fichierAEnvoyer: File = null;
+
+  show = false;
+  showDivRDV(statut) {
+    if (statut === 'CV Sent') {
+      this.show = !this.show;
+    }
   }
 
   ngOnInit() {
@@ -32,8 +47,6 @@ export class CandidatSpaceComponent implements OnInit {
   logout() {
     this.token.signOut();
    }
-
-  fichierAEnvoyer: File = null;
 
   envoiFichier(fichiers: FileList) {
     this.fichierAEnvoyer = fichiers.item(0);

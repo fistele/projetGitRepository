@@ -252,7 +252,7 @@
     src="../assets/images/status.png"
     class="status-img"
   />
-  <span class="status">New Candidate</span>
+  <span class="status">{{candidateStatut}}</span>
 
   <div class="spacer"></div>
   <div *ngIf="info.token; else loggedOut">
@@ -270,9 +270,9 @@
 
   <div class="divInfo">
     <hr>
-    <p>Fist Name : first name</p>
-    <p>Last Name : last name</p>
-    <p>Email : firstname@domain.com</p>
+    <p>Fist Name : {{candidateFirstName}}</p>
+    <p>Last Name : {{candidateLastName}}</p>
+    <p>Email : {{candidateEmail}}</p>
 
     <!-- Footer -->
     <footer>
@@ -281,15 +281,24 @@
   </div>
 
   <div class="divForm">
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Envoyer votre cv : </label>
-        <input type="file" id="exampleFormControlFile1" name="file"/>
-        <br><br>
-        <input type="submit" value="Envoyer" />
-        <input type="reset" value="Annuler" />
-      </div>
-    </form>
+    <div class="form">
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Envoyer votre cv : </label>
+          <input type="file" id="exampleFormControlFile1" name="file"/>
+          <br><br>
+          <input type="submit" value="Envoyer" />
+          <input type="reset" value="Annuler" />
+        </div>
+      </form>
+    </div>
+
+    <div class="divChoixRDV" [hidden]="show">
+      <p>Veillez choisir une date pour votre test technique</p>
+      <form>
+
+      </form>
+    </div>
 
   </div>
 
