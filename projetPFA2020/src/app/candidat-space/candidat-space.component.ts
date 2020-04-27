@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {AuthLoginInfo} from '../auth/login-info';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-candidat-space',
@@ -9,7 +10,7 @@ import {AuthLoginInfo} from '../auth/login-info';
 })
 export class CandidatSpaceComponent implements OnInit {
 
-  constructor(private token: TokenStorageService) {
+  constructor(private token: TokenStorageService, private userService: UserService,) {
   }
   private envoiFichierService: any;
   form: any = {};
@@ -20,10 +21,12 @@ export class CandidatSpaceComponent implements OnInit {
   private loginInfo: AuthLoginInfo;
   info: any;
 
+  user: any;
+
   candidateStatut = 'New candidate';
-  candidateFirstName = this.form.first_name;
-  candidateLastName = this.form.last_name;
-  candidateEmail = this.form.email;
+  candidateFirstName = '';
+  candidateLastName = 'soft';
+  candidateEmail = 'mail';
 
 
   fichierAEnvoyer: File = null;
@@ -39,8 +42,15 @@ export class CandidatSpaceComponent implements OnInit {
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
-      authorities: this.token.getAuthorities()
+      authorities: this.token.getAuthorities(),
     };
+    this.userService.getUserInfo('http://localhost:8080/userData/' + this.token.getUsername())
+      .subscribe(data => {
+        this.user = data;
+        this.candidateFirstName = this.user.first_name;
+      }, error => {
+          console.log(error);
+        });
   }
 
 

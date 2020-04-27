@@ -8,7 +8,7 @@ import {SignUpInfo} from '../auth/signup-info';
   styleUrls: ['./login-new-user.component.css']
 })
 export class LoginNewUserComponent implements OnInit {
-   form: any = {};
+  form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;

@@ -27,4 +27,8 @@ export class UserService {
     return this.http.get(this.adminUrl,
       { responseType: 'text' });
   }
+
+  public getUserInfo(url) {
+    return this.http.get(url);
+  }
 }

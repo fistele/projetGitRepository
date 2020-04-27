@@ -11,7 +11,7 @@ import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-@Entity
+@Entity()
 @Data
 @AllArgsConstructor
 @Table(name = "user", uniqueConstraints = {

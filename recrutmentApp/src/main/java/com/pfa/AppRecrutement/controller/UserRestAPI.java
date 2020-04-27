@@ -40,5 +40,14 @@ public class UserRestAPI {
         userRepository.deleteById(id);
     }
 
+    @GetMapping(value = "/userData/{username}")
+    public User getInfo(@PathVariable (name="username") String username){
+        return new User();
+    }
+
+    @GetMapping(value = "/userData/{useremail}")
+    public User getUserByEmail(@PathVariable (name="useremail") String useremail){
+        return userRepository.findByEmail(useremail).orElse(null);
+    }
 
 }

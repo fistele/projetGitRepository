@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
- import { LoginUserComponent } from './login-user/login-user.component';
+import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginNewUserComponent } from './login-new-user/login-new-user.component';
 import { LoginNewRhComponent } from './login-new-rh/login-new-rh.component';
 import { CandidatSpaceComponent } from './candidat-space/candidat-space.component';
 import { RhSpaceComponent } from './rh-space/rh-space.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { LoginRhComponent } from './login-rh/login-rh.component';
+import {AuthInterceptor} from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
     LoginNewUserComponent,
     LoginNewRhComponent,
     CandidatSpaceComponent,
-    RhSpaceComponent
+    RhSpaceComponent,
+    LoginRhComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
